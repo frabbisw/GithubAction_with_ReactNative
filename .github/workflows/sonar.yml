@@ -3,11 +3,11 @@ name: Run SonarQube
 on:
   push:
     branches:
-      - main 
+      - main
   pull_request:
     branches:
       - main
-      
+
 jobs:
   sonarqube:
     name: SonarQube
@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 10  # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 10 # Shallow clones should be disabled for a better relevancy of analysis
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v4
         env:
