@@ -33,4 +33,4 @@ jobs:
       - name: Install React Native dependencies
         run: npm install --save react-native
       - name: Run React Native lint
-        run: npx eslint . --ext .js,.jsx,.ts,.tsx
+        run: npx eslint "**/*.{js,jsx,ts,tsx}"
