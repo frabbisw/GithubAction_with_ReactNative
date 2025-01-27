@@ -1,0 +1,36 @@
+name: Run Lints
+
+on:
+  push:
+    branches:
+      - main # Run tests on pushes to the main branch
+  pull_request:
+    branches:
+      - main # Run tests for pull requests targeting the main branch
+
+jobs:
+  lints:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18 # Use Node.js 18, as specified in your package.json
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm install
+      - name: Run ESLint for static analysis
+        run: npm run lint
+      - name: Run Prettier for code formatting check
+        run: npx prettier --check .
+      - name: Install React Native dependencies
+        run: npm install --save react-native
+      - name: Run React Native lint
+        run: npx eslint . --ext .js,.jsx,.ts,.tsx
